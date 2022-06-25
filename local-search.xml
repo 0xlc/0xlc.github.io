@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>sql联表查询on和where上条件的区别</title>
+    <link href="/posts/ff0c747a.html"/>
+    <url>/posts/ff0c747a.html</url>
+    
+    <content type="html"><![CDATA[<p>在on条件里下，无论结果是否正确，都会返回左表数据。在where下会完全过滤。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>sql</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Ubuntu下AppImage出问题解决</title>
+    <link href="/posts/fc163ee1.html"/>
+    <url>/posts/fc163ee1.html</url>
+    
+    <content type="html"><![CDATA[<p>在ubuntu下用Apifox，下载的AppImage格式的，一直提示网络出现问题，无法解决。最后把~&#x2F;.config&#x2F;apifox删除重新运行才解决。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>bug</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>cryptopunks在etherscan中属于erc20分类</title>
+    <link href="/posts/163f9f50.html"/>
+    <url>/posts/163f9f50.html</url>
+    
+    <content type="html"><![CDATA[<p>今天发现在一些提供nft数据查询的api中查不到加密朋克的数据，在etherscan中该项目的NFT属于erc20一类.emoemoemo.</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>没想太多</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="/posts/4a17b156.html"/>
+    <url>/posts/4a17b156.html</url>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  
+</search>
