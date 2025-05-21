@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>查看代理的 IP 地址</title>
+    <link href="/posts/f228e89b.html"/>
+    <url>/posts/f228e89b.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="使用-curl-查看代理的-IP-地址"><a href="#使用-curl-查看代理的-IP-地址" class="headerlink" title="使用 curl 查看代理的 IP 地址"></a>使用 curl 查看代理的 IP 地址</h1><p>在配置代理服务器时，验证代理是否正确工作以及了解代理的出口 IP 地址是非常重要的。本文将介绍如何通过 <code>curl</code> 命令结合代理快速查看代理的 IP 地址。</p><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>当你使用代理（如 SOCKS5 或 HTTP 代理）访问网络时，实际的网络请求会通过代理服务器发出。此时，你可能需要确认代理是否正常工作，或者确认代理的出口 IP 地址是否符合预期。<code>curl</code> 是一个强大的命令行工具，可以轻松实现这一需求。</p><h2 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h2><ul><li>已安装 <code>curl</code>（大多数 Linux 和 macOS 系统默认安装，Windows 用户可通过 WSL 或安装 curl 工具）。</li><li>已配置好代理服务器（如 SOCKS5 代理运行在 <code>127.0.0.1:10000</code>）。</li><li>网络连接正常。</li></ul><h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><ol><li><p><strong>打开终端</strong><br>在你的操作系统中打开终端（如 Linux 的 Terminal、macOS 的 Terminal 或 Windows 的 PowerShell&#x2F;CMD）。</p></li><li><p><strong>使用 curl 结合代理访问 IP 查询服务</strong><br>输入以下命令，通过 SOCKS5 代理查询出口 IP 地址：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl --socks5 127.0.0.1:10000 http://ipinfo.io/ip<br></code></pre></td></tr></table></figure><ul><li><code>--socks5 127.0.0.1:10000</code>：指定 SOCKS5 代理的地址和端口（根据你的代理配置调整）。</li><li><code>http://ipinfo.io/ip</code>：一个简单的 IP 查询服务，返回请求的出口 IP 地址。</li></ul></li><li><p><strong>检查输出</strong><br>如果代理配置正确，命令会返回代理服务器的出口 IP 地址，例如：</p><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs accesslog"><span class="hljs-number">192.168.1.100</span><br></code></pre></td></tr></table></figure><p>如果返回的 IP 地址与你的本地 IP 不同，说明代理工作正常。</p></li></ol><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul><li><strong>代理类型</strong>：本例使用 SOCKS5 代理。如果使用 HTTP&#x2F;HTTPS 代理，可将 <code>--socks5</code> 替换为 <code>--proxy</code>，例如：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl --proxy http://127.0.0.1:8080 http://ipinfo.io/ip<br></code></pre></td></tr></table></figure></li><li><strong>端口号</strong>：确保代理服务器的端口号正确（如 <code>10000</code> 或其他端口）。</li><li><strong>网络问题</strong>：如果命令无响应或报错，检查代理服务器是否正在运行，或者尝试更换 IP 查询服务（如 <code>http://ifconfig.me</code>）。</li><li><strong>安全性</strong>：使用第三方 IP 查询服务时，确保服务可信，避免泄露敏感信息。</li></ul><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过 <code>curl</code> 结合代理访问 IP 查询服务，你可以快速验证代理是否生效并查看其出口 IP 地址。这个方法简单高效，适用于调试代理配置或验证网络环境。</p><p>如果你有其他关于代理或网络调试的问题，欢迎在评论区留言！</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>curl</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>解决npm安装electron问题</title>
+    <link href="/posts/d15476f3.html"/>
+    <url>/posts/d15476f3.html</url>
+    
+    <content type="html"><![CDATA[<h1 id="安装-Electron-的最佳实践"><a href="#安装-Electron-的最佳实践" class="headerlink" title="安装 Electron 的最佳实践"></a>安装 Electron 的最佳实践</h1><p>本文将指导您通过配置 NPM 镜像快速安装 Electron，优化下载速度，尤其适用于网络环境受限的场景。</p><h2 id="步骤-1：配置-NPM-镜像"><a href="#步骤-1：配置-NPM-镜像" class="headerlink" title="步骤 1：配置 NPM 镜像"></a>步骤 1：配置 NPM 镜像</h2><p>在项目根目录下创建 <code>.npmrc</code> 文件，并添加以下内容以使用国内镜像加速下载：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">registry=https://registry.npmmirror.com/<br>electron_mirror=https://npmmirror.com/mirrors/electron/<br></code></pre></td></tr></table></figure><blockquote><p><strong>说明</strong>：  </p><ul><li><code>registry</code> 设置为国内 NPM 镜像，加速依赖包下载。  </li><li><code>electron_mirror</code> 指定 Electron 的二进制文件镜像，避免从默认源下载缓慢。</li></ul></blockquote><h2 id="步骤-2：安装-Electron"><a href="#步骤-2：安装-Electron" class="headerlink" title="步骤 2：安装 Electron"></a>步骤 2：安装 Electron</h2><p>在项目目录下运行以下命令安装 Electron：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm install electron<br></code></pre></td></tr></table></figure><blockquote><p><strong>提示</strong>：  </p><ul><li>确保已安装 Node.js 和 NPM。建议使用 LTS 版本以保证兼容性。  </li><li>如果安装过程中仍较慢，可尝试清除缓存：<code>npm cache clean --force</code>。</li></ul></blockquote><h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><ol><li><p><strong>安装卡住或失败</strong>  </p><ul><li>检查网络连接是否稳定。  </li><li>尝试切换到其他镜像源，如 <code>https://registry.taobao.org</code>。  </li><li>确保 <code>.npmrc</code> 文件路径正确且无语法错误。</li></ul></li><li><p><strong>版本兼容性</strong>  </p><ul><li>建议查看 <a href="https://www.electronjs.org/docs/latest/">Electron 官方文档</a>，选择与您的 Node.js 版本兼容的 Electron 版本。</li></ul></li></ol><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过配置 <code>.npmrc</code> 使用国内镜像，您可以显著提升 Electron 的安装速度。此方法简单高效，适合大多数开发场景。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>electron</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>八字参考书籍</title>
+    <link href="/posts/bd3b9abe.html"/>
+    <url>/posts/bd3b9abe.html</url>
+    
+    <content type="html"><![CDATA[<p>邵伟华《四柱预测学》</p><p>韦千里《千里命稿》</p><p>（明）刘基《滴天髓》</p><p>（宋）徐子平《渊海子平》</p><p>《穷通宝鉴》</p><p>《三命通会》</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>八字</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>下载文件乱码 ResponseType blob</title>
+    <link href="/posts/1073475d.html"/>
+    <url>/posts/1073475d.html</url>
+    
+    <content type="html"><![CDATA[<p>引入mockjs导致ResponseType blob乱码下载文件打不开，删除mockjs后恢复正常</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>bug</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>sql联表查询on和where上条件的区别</title>
+    <link href="/posts/ff0c747a.html"/>
+    <url>/posts/ff0c747a.html</url>
+    
+    <content type="html"><![CDATA[<p>在on条件里下，无论结果是否正确，都会返回左表数据。在where下会完全过滤。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>sql</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Ubuntu下AppImage出问题解决</title>
+    <link href="/posts/fc163ee1.html"/>
+    <url>/posts/fc163ee1.html</url>
+    
+    <content type="html"><![CDATA[<p>在ubuntu下用Apifox，下载的AppImage格式的，一直提示网络出现问题，无法解决。最后把~&#x2F;.config&#x2F;apifox删除重新运行才解决。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>bug</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>cryptopunks在etherscan中属于erc20分类</title>
+    <link href="/posts/163f9f50.html"/>
+    <url>/posts/163f9f50.html</url>
+    
+    <content type="html"><![CDATA[<p>今天发现在一些提供nft数据查询的api中查不到加密朋克的数据，在etherscan中该项目的NFT属于erc20一类.emoemoemo.</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>没想太多</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="/posts/4a17b156.html"/>
+    <url>/posts/4a17b156.html</url>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  
+</search>
